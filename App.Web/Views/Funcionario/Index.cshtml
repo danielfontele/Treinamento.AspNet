@@ -1,3 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Funcionario";
 }
+
+<section class="painel app-views-departamento-index">
+
+    <nav>
+        <a href="editar.html">Novo</a>
+    </nav>
+
+    <div class="titulo-principal">
+        Departamentos
+    </div>
+
+    <div class="linha">
+        <div class="coluna">
+            <input type="text" name="filtro">
+            <button name="pesquisar">Pesquisar</button>
+        </div>
+    </div>
+
+    <div class="linha">
+        <div class="coluna">
+
+            <table name="grid">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">
+                            Total:&nbsp;<span>0</span>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+
+    <script src="/js/app.views.funcionario.index.js"></script>
+    <script>
+        new app.views.funcionario.index(document.querySelector(".app-views-funcionario-index"));
+    </script>
+
+}
