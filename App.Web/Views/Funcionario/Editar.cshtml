@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Funcionario
+@{
     ViewData["Title"] = "Funcionario - Editar";
 }
 
@@ -17,20 +18,20 @@
     <!-- ID -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
-            <label>Id</label>
+            @Html.LabelFor(x => x.Id)
         </div>
         <div class="coluna">
-            <input type="text" name="id">
+            @Html.TextBoxFor(x => x.Id)
         </div>
     </div>
 
     <!-- Nome -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
-            <label>Nome</label>
+            @Html.LabelFor(x => x.Descricao)
         </div>
         <div class="coluna">
-            <input type="text" name="nome" class="tamanho300">
+            @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off"})
         </div>
     </div>
 
