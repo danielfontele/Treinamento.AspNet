@@ -1,10 +1,14 @@
-﻿<section class="painel app-views-departamento-editar">
+﻿@{
+    ViewData["Title"] = "Departamento - Editar";
+}
+
+<section class="painel app-views-departamento-editar">
 
     <!-- Barra de botoes -->
     <nav>
-        <a name="salvar">Salvar</a>
-        <a name="excluir">Excluir</a>
-        <a name="cancelar">Cancelar e voltar</a>
+        @Html.ActionLink("Salvar", "Salvar")
+        @Html.ActionLink("Excluir", "Excluir")
+        @Html.ActionLink("Cancelar", "Cancelar")
     </nav>
 
     <!-- Titulo -->
