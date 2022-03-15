@@ -1,71 +1,68 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+html, body {
+    height: 100%;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.container {
+    margin: 0 200px 0 200px;
+    height: 100%;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+header {
+    background-color: #101010;
+    font-weight: bold;
+    padding: 15px 200px 15px 200px;
+    margin: 0 -200px 0 -200px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    header > a {
+        color: #bbbbbb;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+        header > a:hover {
+            color: #ffffff;
+        }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 70.5%;
+    padding: 10px 0 10px;
+    border-top: 1px solid #d0cdcd;
+    text-align: center;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+input, select {
+    padding: .375rem .75rem;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    input.tamanho300 {
+        width: 300px;
+    }
+
+    select.tamanho300 {
+        width: 325px;
+    }
+
+button {
+    border: 1px solid transparent;
+    padding: .375rem .375rem;
+    border-radius: .25rem;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
+    button:hover {
+        cursor: pointer;
+        background-color: #ced4da;
+    }
