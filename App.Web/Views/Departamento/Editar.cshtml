@@ -1,1 +1,43 @@
-﻿
+﻿<section class="painel app-views-departamento-editar">
+
+    <!-- Barra de botoes -->
+    <nav>
+        <a name="salvar">Salvar</a>
+        <a name="excluir">Excluir</a>
+        <a name="cancelar">Cancelar e voltar</a>
+    </nav>
+
+    <!-- Titulo -->
+    <div class="titulo-principal">Departamentos</div>
+
+    <!-- ID -->
+    <div class="linha">
+        <div class="coluna40 texto-alinhado-direita">
+            <label>Id</label>
+        </div>
+        <div class="coluna">
+            <input type="text" name="id">
+        </div>
+    </div>
+
+    <!-- Descrição -->
+    <div class="linha">
+        <div class="coluna40 texto-alinhado-direita">
+            <label>Descrição</label>
+        </div>
+        <div class="coluna">
+            <input type="text" name="descricao" class="tamanho300">
+        </div>
+    </div>
+
+
+</section>
+
+@section Scripts {
+
+    <script src="/js/app.views.departamento.editar.js" ></script>
+    <script>        
+        new app.views.departamento.editar($(".app-views-departamento-editar"));
+    </script>
+
+}
