@@ -15,11 +15,13 @@ namespace App.Web.Controllers
         }
         public IActionResult Salvar()
         {
-            return View("Index");
+            // To-Do
+            return RedirectToAction("Index");
         }
         public IActionResult Excluir()
         {
-            return View("Index");
+            // To-Do
+            return RedirectToAction("Index");
         }
     }
 }
