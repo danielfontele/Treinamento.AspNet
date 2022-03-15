@@ -8,5 +8,6 @@ namespace App.Web.Models
         public string Id { get; set; }
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
+        public Departamento Departamento { get; set; }
     }
 }
