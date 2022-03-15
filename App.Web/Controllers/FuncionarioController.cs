@@ -8,9 +8,22 @@ namespace App.Web.Controllers
         {
             return View();
         }
+
         public IActionResult Novo()
         {
             return View("Editar");
+        }
+        public IActionResult Salvar()
+        {
+            return View("Index");
+        }
+        public IActionResult Excluir()
+        {
+            return View("Index");
+        }
+        public IActionResult Cancelar()
+        {
+            return View("Index");
         }
     }
 }
