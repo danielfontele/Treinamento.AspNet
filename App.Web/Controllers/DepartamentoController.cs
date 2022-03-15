@@ -8,5 +8,10 @@ namespace App.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Novo()
+        {
+            return View("Editar");
+        }
     }
 }
