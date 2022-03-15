@@ -21,9 +21,5 @@ namespace App.Web.Controllers
         {
             return View("Index");
         }
-        public IActionResult Cancelar()
-        {
-            return View("Index");
-        }
     }
 }
