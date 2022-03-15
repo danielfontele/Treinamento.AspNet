@@ -1,5 +1,12 @@
 ﻿@model Funcionario
 @{
+
+    List<SelectListItem> listaDepartamentos = new List<SelectListItem>()
+    {
+        new SelectListItem("Departamento teste 01", "01"),
+        new SelectListItem("Departamento teste 02", "02"),
+        new SelectListItem("Departamento teste 03", "03")
+    };
     ViewData["Title"] = "Funcionario - Editar";
 }
 
@@ -38,10 +45,10 @@
     <!-- Departamento -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
-            <label>Departamento</label>
+            @Html.LabelFor(x => x.Departamento.Descricao)
         </div>
         <div class="coluna">
-            <select name="departamento" class="tamanho300"></select>
+            @Html.DropDownListFor(x => x.Departamento.Descricao, listaDepartamentos)
         </div>
     </div>
 
