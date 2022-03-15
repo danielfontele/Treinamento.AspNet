@@ -1,0 +1,121 @@
+.painel {
+    height: 60%;
+}
+
+.painel nav {
+    background-color: #4261d0;
+    border-radius: 0 0 10px 10px;
+    padding: 5px 10px 5px 10px;
+    box-shadow: 0px 3px 4px 1px #8c8a8a;
+    margin-bottom: 30px;
+}
+
+.painel nav a {
+    text-decoration: none;
+    color: #e4e4e4    
+}
+
+.painel nav a:hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff
+}
+
+.painel .titulo-principal {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4261d0;
+    border-bottom: 1px solid #cecccc;
+    margin-bottom: 30px;
+}
+
+.painel .linha {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.painel .linha div {
+    margin-right: 5px;
+}
+
+.painel .linha .coluna {
+    width: 100%;
+}
+
+.painel .linha .coluna10 {
+    width: 10%;
+}
+
+.painel .linha .coluna20 {
+    width: 20%;
+}
+
+.painel .linha .coluna30 {
+    width: 30%;
+}
+
+.painel .linha .coluna40 {
+    width: 40%;
+}
+
+.painel .linha .texto-alinhado-centro {
+    text-align: center;
+}
+
+.painel .linha .texto-alinhado-direita {
+    text-align: right;
+}
+
+.painel .linha .texto-alinhado-esquerda {
+    text-align: left;
+}
+
+.painel table[name="grid"] {
+    border-collapse: collapse;
+    border: 1px solid #bbb5b5;
+    width: 100%;
+    height: 300px;
+}
+
+.painel table[name="grid"] thead {
+    background-color: #101010;
+    color: #bbbbbb;
+    text-align: left;
+}
+
+.painel table[name="grid"] thead tr {
+    height: 30px;
+}
+
+.painel table[name="grid"] thead th {
+    padding-left: 5px;
+}
+
+.painel table[name="grid"] tbody {
+    background-color: #e8ebec;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.painel table[name="grid"] tbody td {
+    padding-left: 5px;
+}
+
+.painel table[name="grid"] tbody .item {
+    height: 20px;
+}
+
+.painel table[name="grid"] tbody .item:hover {
+    cursor: pointer;
+    background-color: #b8bab0;
+}
+
+.painel table[name="grid"] tfoot {
+    background-color: #ababab;
+}
+
+.painel table[name="grid"] tfoot tr th {
+    text-align: center;
+}
