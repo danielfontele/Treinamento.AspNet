@@ -2,6 +2,7 @@
 using App.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Text.Encodings.Web;
 
 namespace App.Web.Controllers
 {
@@ -19,8 +20,11 @@ namespace App.Web.Controllers
             return View();
         }
 
-        public IActionResult Novo()
+        public IActionResult Novo(int codigo)
         {
+            var dto = _servico.Consulte(codigo);
+
+
             return View("Editar");
         }
 
@@ -36,6 +40,18 @@ namespace App.Web.Controllers
             //Impl....
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult ConsulteParcial(string filtro)
+        {
+            filtro = filtro != null ? HtmlEncoder.Default.Encode(filtro) : filtro;
+
+            var resultado = _servico.ConsultePaginado(filtro, 1, int.MaxValue);
+
+            var lista = resultado.Lista.Select(x => new Departamento { Codigo = x.Codigo, Descricao = x.Descricao }).ToList();
+
+            return Json(lista);
         }
 
         [HttpGet]
