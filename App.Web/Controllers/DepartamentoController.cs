@@ -45,9 +45,11 @@ namespace App.Web.Controllers
         [HttpGet]
         public IActionResult ConsulteParcial(string filtro)
         {
+            int itensPorPagina = int.MaxValue;
+
             filtro = filtro != null ? HtmlEncoder.Default.Encode(filtro) : filtro;
 
-            var resultado = _servico.ConsultePaginado(filtro, 1, int.MaxValue);
+            var resultado = _servico.ConsultePaginado(filtro, 1, itensPorPagina);
 
             var lista = resultado.Lista.Select(x => new Departamento { Codigo = x.Codigo, Descricao = x.Descricao }).ToList();
 

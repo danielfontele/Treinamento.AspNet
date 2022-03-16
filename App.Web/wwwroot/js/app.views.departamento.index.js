@@ -56,7 +56,9 @@ app.views.departamento.index.prototype = {
     pesquisar: function () {
         let _this = this;
         let url = location.origin + "/Departamento/ConsulteParcial";
-        let data = {}
+        let data = {
+            filtro: this.$elFiltro.val()
+        }
 
         $.ajax({
             type: "GET",
