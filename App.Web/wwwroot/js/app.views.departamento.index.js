@@ -70,9 +70,9 @@ app.views.departamento.index.prototype = {
                 _this.preencheTabela(retorno)
             },
             error: function (error) {
-                 console.log("erro ajax ------------------------")
+                 console.log("erro ajax - get---------------------")
                  console.log(error)
-                 console.log("----------------------------------")
+                 console.log("------------------------------------")
             }
         })
 

@@ -8,11 +8,11 @@
 @model Departamento
 
 <section class="painel app-views-departamento-editar">
-            
+
     <!-- Barra de botoes -->
     <nav>
-        @Html.ActionLink("Salvar", "Salvar")
-        @Html.ActionLink("Excluir", "Excluir")
+        <a name="salvar">Salvar</a>
+        <a name="excluir">Excluir</a>
         @Html.ActionLink("Cancelar e voltar", "Index")
     </nav>
 
@@ -25,7 +25,7 @@
             @Html.LabelFor(x => x.Codigo)
         </div>
         <div class="coluna">
-            @Html.TextBoxFor(x => x.Codigo)
+            @Html.TextBoxFor(x => x.Codigo, new { @name="id"} )
         </div>
     </div>
 
@@ -35,7 +35,7 @@
             @Html.LabelFor(x => x.Descricao)
         </div>
         <div class="coluna">
-            @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off"})
+            @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off", @name="descricao"})
         </div>
     </div>
 
@@ -46,16 +46,16 @@
 
 @section Scripts{
 
-    <script>
-        $(function() {
-            app.carregueJavascript("/js/app.views.departamento.edit.js", {
-                callback: function() {
+<script>
+    $(function() {
+        app.carregueJavascript("/js/app.views.departamento.editar.js", {
+            callback: function() {
 
-                    new app.views.departamento.edit($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
-                }
-            });
-        })
-    </script>
+                new app.views.departamento.editar($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+            }
+        });
+    })
+</script>
 
 }
 

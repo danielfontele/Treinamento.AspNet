@@ -1,4 +1,5 @@
-﻿using App.Servico.Interfaces.Servicos;
+﻿using App.Servico.Dtos;
+using App.Servico.Interfaces.Servicos;
 using App.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -43,16 +44,20 @@ namespace App.Web.Controllers
             return View(departamento);
         }
 
-        public IActionResult Salvar()
+        [HttpPost]
+        public IActionResult Salvar(int codigo, string descricao)
         {
-            // Impl...
+            var departamento = new DtoDepartamento { Codigo = codigo, Descricao = descricao };
+            
+            _servico.Cadastre(new DtoDepartamento { Codigo = codigo, Descricao = descricao });
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Excluir()
+        [HttpDelete]
+        public IActionResult Excluir(int codigo)
         {
-            //Impl....
+            _servico.Exclue(codigo);
 
             return RedirectToAction("Index");
         }
@@ -70,6 +75,15 @@ namespace App.Web.Controllers
 
             return Json(lista);
         }
+
+        [HttpGet]
+        public IActionResult ConsultPorId(int id)
+        {
+            var resultado = _servico.Consulte(id);
+
+            return Json(resultado);
+        }
+
 
         [HttpGet]
         public IActionResult ConsulteLista()
