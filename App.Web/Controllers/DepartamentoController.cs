@@ -22,10 +22,14 @@ namespace App.Web.Controllers
 
         public IActionResult Novo(int codigo)
         {
+            return View("Editar");
+        }
+
+        public IActionResult Editar(int codigo)
+        {
             var dto = _servico.Consulte(codigo);
 
-
-            return View("Editar");
+            return View();
         }
 
         public IActionResult Salvar()

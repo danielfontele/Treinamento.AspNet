@@ -91,6 +91,10 @@ app.views.departamento.index.prototype = {
 
         this.$elTabelaItens.html(tbody.concat("<tr><td></td><td></td></tr>"))
         this.$elTabelaTotal.text(dados.length)
+    },
+
+    editar: function (codigo) {
+        window.location.href = location.origin + "/Departamento/Editar/" + codigo
     }
     
 }
