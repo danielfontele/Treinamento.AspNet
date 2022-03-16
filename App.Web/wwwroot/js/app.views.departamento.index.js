@@ -37,7 +37,7 @@ app.views.departamento.index.prototype = {
     },
 
     ligaEventos: function () {
-        var _this = this
+        let _this = this
 
         this.$elFiltro.on("keyup", function () {
             _this.pesquisar();
@@ -48,15 +48,15 @@ app.views.departamento.index.prototype = {
         })
 
         this.$elTabelaItens.on("click", ".item", function () {
-            var codigo = $(this).find("[data-codigo]").text()
+            let codigo = $(this).find("[data-codigo]").text()
             _this.editar(codigo)
         })
     },
 
     pesquisar: function () {
-        var _this = this;
-        var url = location.origin + "/Departamento/ConsulteParcial";
-        var data = {}
+        let _this = this;
+        let url = location.origin + "/Departamento/ConsulteParcial";
+        let data = {}
 
         $.ajax({
             type: "GET",
@@ -77,7 +77,7 @@ app.views.departamento.index.prototype = {
     },
 
     preencheTabela: function (dados) {
-        var tbody = dados.reduce(function (linhas, departamento) {
+        let tbody = dados.reduce(function (linhas, departamento) {
             linhas = linhas
                 .concat("<tr class='item'>")
                 .concat("<td data-codigo='" + departamento.codigo + "' >").concat(departamento.codigo).concat("</td>")
