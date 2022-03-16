@@ -1,4 +1,11 @@
-﻿@model Departamento
+﻿@{
+    ViewData["titulo"] = "Departamento";
+
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { habilite = true };
+}
+
+@model Departamento
 
 <section class="painel app-views-departamento-editar">
             
@@ -10,7 +17,7 @@
     </nav>
 
     <!-- Titulo -->
-    <div class="titulo-principal">Departamentos</div>
+    <div class="titulo-principal">Departamento</div>
 
     <!-- Codigo -->
     <div class="linha">
@@ -22,7 +29,7 @@
         </div>
     </div>
 
-    <!-- Descrição -->
+    <!-- Nome -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
             @Html.LabelFor(x => x.Descricao)
@@ -36,11 +43,19 @@
 </section>
 
 
+
 @section Scripts{
 
-    <script src="/js/app.views.departamento.editar.js" ></script>
-    <script>        
-        //new app.views.departamento.editar($(".app-views-departamento-editar"));
+    <script>
+        $(function() {
+            app.carregueJavascript("/js/app.views.departamento.edit.js", {
+                callback: function() {
+
+                    new app.views.departamento.edit($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+                }
+            });
+        })
     </script>
 
 }
+
