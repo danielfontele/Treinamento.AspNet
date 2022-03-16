@@ -29,7 +29,18 @@ namespace App.Web.Controllers
         {
             var dto = _servico.Consulte(codigo);
 
-            return View();
+            if (dto == null)
+            {
+                return NotFound();
+            }
+
+            var departamento = new Departamento
+            {
+                Codigo = dto.Codigo,
+                Descricao = dto.Descricao,
+            };
+
+            return View(departamento);
         }
 
         public IActionResult Salvar()
