@@ -1,64 +1,46 @@
 ﻿@model Funcionario
-@{
-
-    List<SelectListItem> listaDepartamentos = new List<SelectListItem>()
-    {
-        new SelectListItem("Departamento teste 01", "01"),
-        new SelectListItem("Departamento teste 02", "02"),
-        new SelectListItem("Departamento teste 03", "03")
-    };
-    ViewData["Title"] = "Funcionario - Editar";
-}
 
 <section class="painel app-views-funcionario-editar">
-
+            
     <!-- Barra de botoes -->
     <nav>
         @Html.ActionLink("Salvar", "Salvar")
         @Html.ActionLink("Excluir", "Excluir")
-        @Html.ActionLink("Cancelar", "Index")
+        @Html.ActionLink("Cancelar e voltar", "Index")
     </nav>
 
     <!-- Titulo -->
     <div class="titulo-principal">Funcionários</div>
 
-    <!-- ID -->
+    <!-- Codigo -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Id)
+            @Html.LabelFor(x => x.Codigo)
         </div>
         <div class="coluna">
-            @Html.TextBoxFor(x => x.Id)
+            @Html.TextBoxFor(x => x.Codigo)
         </div>
     </div>
 
     <!-- Nome -->
     <div class="linha">
         <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Descricao)
+            @Html.LabelFor(x => x.Nome)
         </div>
         <div class="coluna">
-            @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off"})
+            @Html.TextBoxFor(x => x.Nome, new { @class="tamanho300", @autocomplete="off"})
         </div>
     </div>
 
-    <!-- Departamento -->
-    <div class="linha">
-        <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Departamento.Descricao)
-        </div>
-        <div class="coluna">
-            @Html.DropDownListFor(x => x.Departamento.Descricao, listaDepartamentos)
-        </div>
-    </div>
 
 </section>
 
-@section Scripts {
+
+@section Scripts{
 
     <script src="/js/app.views.funcionario.editar.js" ></script>
     <script>        
-        new app.views.funcionario.editar($(".app-views-funcionario-editar"));
+        //new app.views.funcionario.editar($(".app-views-funcionario-editar"));
     </script>
 
 }

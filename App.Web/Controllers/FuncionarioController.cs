@@ -13,14 +13,18 @@ namespace App.Web.Controllers
         {
             return View("Editar");
         }
+
         public IActionResult Salvar()
         {
-            // To-Do
+            // Impl...
+
             return RedirectToAction("Index");
         }
+
         public IActionResult Excluir()
         {
-            // To-Do
+            //Impl....
+
             return RedirectToAction("Index");
         }
     }

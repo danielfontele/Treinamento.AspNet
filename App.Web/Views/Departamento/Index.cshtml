@@ -1,10 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Departamento";
+    ViewData["titulo"] = "Departamento";
 }
 
 <section class="painel app-views-departamento-index">
-
-    <nav>
+           
+    <nav>        
         @Html.ActionLink("Novo", "Novo")
     </nav>
 
@@ -14,7 +14,7 @@
 
     <div class="linha">
         <div class="coluna">
-            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete = "off"})
+            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})                        
             <button name="pesquisar">Pesquisar</button>
         </div>
     </div>
@@ -25,15 +25,15 @@
             <table name="grid">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Código</th>
                         <th>Descrição</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                     <tr>
                         <td></td>
                         <td></td>
-                    </tr>
+                    </tr>                                                 
                 </tbody>
                 <tfoot>
                     <tr>
@@ -49,11 +49,14 @@
 
 </section>
 
+
+
 @section Scripts{
 
-    <script src="/js/app.views.departamento.index.js"></script>
-    <script>
-        new app.views.departamento.index(document.querySelector(".app-views-departamento-index"));
+    <script src="/js/app.views.departamento.index.js" ></script>    
+    <script>        
+        //new app.views.departamento.index(document.querySelector(".app-views-departamento-index"));
     </script>
 
 }
+

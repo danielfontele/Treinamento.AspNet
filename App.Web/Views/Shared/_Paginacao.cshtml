@@ -1,0 +1,39 @@
+﻿@using System
+
+@model App.Web.Models.PaginacaoModel
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+
+    var modelParaOClientSide = new
+    {
+        identificador = Model.IdentificadorDaPropriedade,
+        controller = Model.Controller,
+        action = Model.Action,
+        pagina = Model.Pagina,
+        quantidade = Model.Quantidade,
+        seletorTabela = Model.SeletorTabela,
+        apiTabela = Model.ApiTabela
+    };
+}
+
+<div id="@(idComponente)" class="app-paginacao">
+    <nav id="@(Model.IdentificadorDaPropriedade)"
+         name="@(Model.IdentificadorDaPropriedade)">
+
+        <ul class="paginacao">
+            @* paginas *@
+        </ul>
+    </nav>
+</div>
+
+<script>
+    $(function () {
+        app.carregueCss("/css/app.paginacao.css");
+        app.carregueJavascript("/js/app.paginacao.js", {
+            callback: function () {
+                new app.paginacao($("#@(idComponente)"), @Html.Raw(Json.Serialize(@modelParaOClientSide)));
+            }
+        });
+    })
+</script>

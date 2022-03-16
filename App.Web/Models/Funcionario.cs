@@ -1,13 +1,11 @@
-﻿using System.ComponentModel;
-
-namespace App.Web.Models
+﻿namespace App.Web.Models
 {
     public class Funcionario
     {
-        [DisplayName("Código")]
-        public string Id { get; set; }
-        [DisplayName("Descrição")]
-        public string Descricao { get; set; }
+        public int Codigo { get; set; }
+
+        public string Nome { get; set; }
+
         public Departamento Departamento { get; set; }
     }
 }

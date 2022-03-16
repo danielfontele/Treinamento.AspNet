@@ -1,0 +1,61 @@
+﻿@using System
+
+@model App.Web.Models.ComponenteModel
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+    var propriedadeSelecionada = Model.IdentificadorDaPropriedade + "." + Model.CampoChave;
+    var modelParaOClientSide = new
+    {
+        identificador = Model.IdentificadorDaPropriedade,
+        controller = Model.Controller,
+        action = Model.Action,
+        itemSelecionado = Model.Objeto,
+        colunas = Model.Colunas,
+        campoChave = Model.CampoChave,
+        camposTemplate = Model.CamposTemplate,
+        quantidade = Model.QtdDeItensRetornados,
+        propriedadeSelecionada = propriedadeSelecionada
+    };
+}
+
+<div id="@(idComponente)" class="app-combogrid">
+
+    @Html.Hidden(@propriedadeSelecionada)
+
+    <div class="dropdown">
+        <input type="text"               
+               id="@(Model.IdentificadorDaPropriedade)"
+               name="@(Model.IdentificadorDaPropriedade)"
+               placeholder="@(Model.Obrigatorio ? "Campo obrigatório" : "")"
+               class="@(Model.HtmlAttributes["class"])"
+               autocomplete="off"
+               data-pesquisar
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false" />
+        
+        <span class="dropdown-icon"></span>
+
+        <div class="dropdown-menu" aria-labelledby="@(Model.IdentificadorDaPropriedade)">
+            <table name="grid">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        app.carregueCss("/css/app.combogrid.css");
+        app.carregueJavascript("/js/app.combogrid.js", {
+            callback: function () {
+                new app.combogrid($("#@(idComponente)"), @Html.Raw(Json.Serialize(@modelParaOClientSide)));
+            }
+        });
+    })
+</script>
