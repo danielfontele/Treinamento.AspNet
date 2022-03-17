@@ -20,7 +20,6 @@ app.views.departamento.editar.prototype = {
     inicialize: function () {
         this.$elForm = this.$el.find("form")
         this.$elSalvar = this.$el.find("[name='salvar']");
-        this.$elExcluir = this.$el.find("[name='excluir']")
 
         this.prepareComponentes();
 
@@ -47,7 +46,4 @@ app.views.departamento.editar.prototype = {
         this.$elForm.submit();
     },
 
-    excluir: function () {
-
-    }
 }

@@ -77,7 +77,6 @@ namespace App.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpDelete]
         public IActionResult Excluir(int codigo)
         {
             _servico.Exclue(codigo);

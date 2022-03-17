@@ -17,7 +17,7 @@
 
             @if (Model != null && Model.Codigo != 0)
             {
-                <a name="excluir">Excluir</a>
+               @Html.ActionLink("Excluir", "Excluir", new { Model.Codigo } )
             }
 
             @Html.ActionLink("Cancelar e voltar", "Index")
