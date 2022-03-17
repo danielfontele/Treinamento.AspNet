@@ -1,0 +1,19 @@
+﻿
+@model ComponenteModel
+
+
+<input type="text" 
+       name="@(Model.Propriedade)" 
+       id="@(Model.Propriedade)" 
+       placeholder="Código..."
+       class=""/>
+
+<script>
+     $(function(){
+            app.carregueJavascript("/js/app.textbox.js", {
+                callback: function() {
+                    new app.textbox($("#@(Model.Propriedade)"));
+                }
+            });
+        });
+</script>
