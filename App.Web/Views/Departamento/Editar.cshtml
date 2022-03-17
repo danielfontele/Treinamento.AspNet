@@ -3,6 +3,7 @@
 
     var idComponente = Guid.NewGuid().ToString("N");
     var modelParaOClientSide = new { habilite = true };
+    
 }
 
 @model Departamento
@@ -17,7 +18,7 @@
 
             @if (Model != null && Model.Codigo != 0)
             {
-               @Html.ActionLink("Excluir", "Excluir", new { Model.Codigo } )
+                @Html.ActionLink("Excluir", "Excluir", new { Model.Codigo } )
             }
 
             @Html.ActionLink("Cancelar e voltar", "Index")
@@ -32,7 +33,7 @@
                 @Html.LabelFor(x => x.Codigo)
             </div>
             <div class="coluna">
-                @Html.TextBoxFor(x => x.Codigo, new { @name="id"} )
+                @Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )
             </div>
         </div>
 

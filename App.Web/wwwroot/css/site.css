@@ -56,6 +56,10 @@ input, select {
         width: 325px;
     }
 
+    input:disabled {
+        background-color: #cecece;
+    }
+
 button {
     border: 1px solid transparent;
     padding: .375rem .375rem;
