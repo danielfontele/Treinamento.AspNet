@@ -1,4 +1,5 @@
-﻿using App.Servico.Dtos;
+﻿
+using App.Servico.Dtos;
 using App.Servico.Interfaces.Servicos;
 using App.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -45,11 +46,33 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Salvar(Departamento departamento)
+        public IActionResult Salvar(Departamento model)
         {
-            var departamentoDto = new DtoDepartamento { Codigo = departamento.Codigo, Descricao = departamento.Descricao };
+            if(model == null)
+            {
+                return NotFound();
+            }
+
+            var novoRegistro = model.Codigo == 0;
+
+            var dto = new DtoDepartamento
+            {
+                Codigo = model.Codigo,
+                Descricao = model.Descricao,
+            };
+
+            if (novoRegistro)
+            {
+                _servico.Cadastre(dto);
+            }
+            else
+            {
+                _servico.Atualize(dto);
+            }
+
+            //var departamentoDto = new DtoDepartamento { Codigo = departamento.Codigo, Descricao = departamento.Descricao };
             
-            _servico.Cadastre(departamentoDto);
+            //_servico.Cadastre(departamentoDto);
 
             return RedirectToAction("Index");
         }

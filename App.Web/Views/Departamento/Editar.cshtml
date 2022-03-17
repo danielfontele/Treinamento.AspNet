@@ -9,12 +9,17 @@
 
 <section id="@(idComponente)" class="painel app-views-departamento-editar">
 
-    @*@using (Html.BeginForm("Salvar", "Departamento", FormMethod.Post))*@
+    @using (Html.BeginForm("Salvar", "Departamento", FormMethod.Post))
     {
         <!-- Barra de botoes -->
         <nav>
             <a href="#" name="salvar">Salvar</a>
-            <a name="excluir">Excluir</a>
+
+            @if (Model != null && Model.Codigo != 0)
+            {
+                <a name="excluir">Excluir</a>
+            }
+
             @Html.ActionLink("Cancelar e voltar", "Index")
         </nav>
 
