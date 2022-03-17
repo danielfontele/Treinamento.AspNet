@@ -66,13 +66,13 @@ app.views.funcionario.index.prototype = {
             data: data,
             dataType: "json",
             success: function (retorno) {
-                console.log("Sucess Ajax ----------------------")
+                // console.log("Sucess Ajax ----------------------")
                 _this.preencheTabela(retorno)
             },
             error: function (error) {
-                console.log("erro ajax ------------------------")
+                console.log("erro ajax - get---------------------")
                 console.log(error)
-                console.log("----------------------------------")
+                console.log("------------------------------------")
             }
         })
 

@@ -1,4 +1,6 @@
-﻿using App.Servico.Interfaces.Servicos;
+﻿
+using App.Servico.Dtos;
+using App.Servico.Interfaces.Servicos;
 using App.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -9,7 +11,6 @@ namespace App.Web.Controllers
     public class FuncionarioController : Controller
     {
         private IServicoDeFuncionario _servico;
-
         public FuncionarioController(IServicoDeFuncionario servico)
         {
             _servico = servico;
@@ -43,16 +44,41 @@ namespace App.Web.Controllers
             return View(funcionario);
         }
 
-        public IActionResult Salvar()
+        [HttpPost]
+        public IActionResult Salvar(Funcionario model)
         {
-            // Impl...
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            var novoRegistro = model.Codigo == 0;
+
+            var dto = new DtoFuncionario
+            {
+                Codigo = model.Codigo,
+                Nome = model.Nome,
+            };
+
+            if (novoRegistro)
+            {
+                _servico.Cadastre(dto);
+            }
+            else
+            {
+                _servico.Atualize(dto);
+            }
+
+            //var funcionarioDto = new DtoFuncionario { Codigo = funcionario.Codigo, Nome = funcionario.Nome };
+
+            //_servico.Cadastre(funcionarioDto);
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Excluir()
+        public IActionResult Excluir(int codigo)
         {
-            //Impl....
+            _servico.Exclue(codigo);
 
             return RedirectToAction("Index");
         }
@@ -72,12 +98,31 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        public IActionResult ConsultPorId(int id)
+        {
+            var resultado = _servico.Consulte(id);
+
+            return Json(resultado);
+        }
+
+
+        [HttpGet]
         public IActionResult ConsulteLista()
         {
             var listaDto = _servico.ConsulteLista();
             var lista = listaDto.Select(x => new Funcionario { Codigo = x.Codigo, Nome = x.Nome }).ToList();
 
             return Json(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Consulte(string filtro, int quantidade)
+        {
+            filtro = filtro != null ? HtmlEncoder.Default.Encode(filtro) : filtro;
+
+            var resultado = _servico.Consulte(filtro, quantidade);
+
+            return Json(resultado);
         }
     }
 }

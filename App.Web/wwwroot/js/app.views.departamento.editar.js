@@ -36,10 +36,6 @@ app.views.departamento.editar.prototype = {
         this.$elSalvar.on('click', function () {
             _this.salvar();
         });
-
-        this.$elExcluir.on("click", function () {
-            _this.excluir();
-        });
     },
 
     salvar: function () {

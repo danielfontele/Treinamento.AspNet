@@ -11,7 +11,6 @@ namespace App.Web.Controllers
     public class DepartamentoController : Controller
     {
         private IServicoDeDepartamento _servico;
-
         public DepartamentoController(IServicoDeDepartamento servico)
         {
             _servico = servico;
@@ -114,6 +113,16 @@ namespace App.Web.Controllers
             var lista = listaDto.Select(x => new Departamento { Codigo = x.Codigo, Descricao = x.Descricao }).ToList();
 
             return Json(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Consulte(string filtro, int quantidade)
+        {
+            filtro = filtro != null ? HtmlEncoder.Default.Encode(filtro) : filtro;
+
+            var resultado = _servico.Consulte(filtro, quantidade);
+
+            return Json(resultado);
         }
     }
 }

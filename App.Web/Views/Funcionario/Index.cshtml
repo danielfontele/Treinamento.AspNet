@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["titulo"] = "funcionario";
+    ViewData["titulo"] = "Funcionario";
 
     var idComponente = Guid.NewGuid().ToString("N");
     var modelParaOClientSide = new { habilite = true };
@@ -12,12 +12,12 @@
     </nav>
 
     <div class="titulo-principal">
-        funcionarios
+        Funcionarios
     </div>
 
     <div class="linha">
         <div class="coluna">
-            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})                        
+            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})             
             <button name="pesquisar">Pesquisar</button>
         </div>
     </div>
@@ -60,7 +60,7 @@
         $(function() {
             app.carregueJavascript("/js/app.views.funcionario.index.js", {
                 callback: function() {
-                    //var app = { views: { funcionario: { index: function(a, b) { } } } }
+                    // var app = { views: { funcionario: { index: function(a, b) { } } } }
 
                     new app.views.funcionario.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
                 }
