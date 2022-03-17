@@ -45,11 +45,11 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Salvar(int codigo, string descricao)
+        public IActionResult Salvar(Departamento departamento)
         {
-            var departamento = new DtoDepartamento { Codigo = codigo, Descricao = descricao };
+            var departamentoDto = new DtoDepartamento { Codigo = departamento.Codigo, Descricao = departamento.Descricao };
             
-            _servico.Cadastre(new DtoDepartamento { Codigo = codigo, Descricao = descricao });
+            _servico.Cadastre(departamentoDto);
 
             return RedirectToAction("Index");
         }

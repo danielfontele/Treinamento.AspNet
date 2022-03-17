@@ -7,38 +7,40 @@
 
 @model Departamento
 
-<section class="painel app-views-departamento-editar">
+<section id="@(idComponente)" class="painel app-views-departamento-editar">
 
-    <!-- Barra de botoes -->
-    <nav>
-        <a name="salvar">Salvar</a>
-        <a name="excluir">Excluir</a>
-        @Html.ActionLink("Cancelar e voltar", "Index")
-    </nav>
+    @*@using (Html.BeginForm("Salvar", "Departamento", FormMethod.Post))*@
+    {
+        <!-- Barra de botoes -->
+        <nav>
+            <a href="#" name="salvar">Salvar</a>
+            <a name="excluir">Excluir</a>
+            @Html.ActionLink("Cancelar e voltar", "Index")
+        </nav>
 
-    <!-- Titulo -->
-    <div class="titulo-principal">Departamento</div>
+        <!-- Titulo -->
+        <div class="titulo-principal">Departamento</div>
 
-    <!-- Codigo -->
-    <div class="linha">
-        <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Codigo)
+        <!-- Codigo -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Codigo)
+            </div>
+            <div class="coluna">
+                @Html.TextBoxFor(x => x.Codigo, new { @name="id"} )
+            </div>
         </div>
-        <div class="coluna">
-            @Html.TextBoxFor(x => x.Codigo, new { @name="id"} )
-        </div>
-    </div>
 
-    <!-- Nome -->
-    <div class="linha">
-        <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Descricao)
+        <!-- Nome -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Descricao)
+            </div>
+            <div class="coluna">
+                @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off", @name="descricao"})
+            </div>
         </div>
-        <div class="coluna">
-            @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off", @name="descricao"})
-        </div>
-    </div>
-
+    }
 
 </section>
 

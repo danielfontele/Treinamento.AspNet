@@ -18,50 +18,46 @@ app.views.departamento.editar = function ($el, modelParaOClientSide, options) {
 
 app.views.departamento.editar.prototype = {
     inicialize: function () {
-        debugger;
-        // mapear os campos
+        //this.$elForm = this.$el.find("form")
+        //this.$elSalvar = this.$el.find("[name='salvar']");
+
+        //this.prepareComponentes();
+
+        //this.ligaEventos();
+
+
         this.$elSalvar = this.$el.find("[name='salvar']");
         this.$elExcluir = this.$el.find("[name='excluir']");
 
-        console.log(this.$elSalvar)
-
-        this.$elId = this.$el.find("[name='id']");
-        this.$elDescricao = this.$el.find("[name='descricao']");
+        this.$elId = this.$el.find("[name='Id']");
+        this.$elDescricao = this.$el.find("[name='Descricao']");
 
         this.ehFluxoDeCadastro = true;
 
-        // preparar componentes
         this.prepareComponentes();
 
-        // ligar os eventos
         this.ligaEventos();
     },
 
     prepareComponentes: function () {
-        debugger;
         this.preencheDadosDaTela();
         this.habiliteCampos();
     },
 
     ligaEventos: function () {
-        debugger;
-        var _this = this;
+        let _this = this;
 
         this.$elSalvar.on('click', function () {
-            debugger;
             _this.salvar();
-            _this.voltarParaTelaInicial();
         });
 
         this.$elExcluir.on("click", function () {
             _this.excluir();
-            _this.voltarParaTelaInicial();
         });
     },
 
     preencheDadosDaTela: function () {
-        debugger;
-        var id = window.location.search.replace("?", "").split("=")[1];
+        let id = window.location.search.replace("?", "").split("=")[1];
 
         if (id) {
             let _this = this;
@@ -76,7 +72,7 @@ app.views.departamento.editar.prototype = {
                 data: data,
                 dataType: "json",
                 success: function (retorno) {
-                    var departamento = retorno;
+                    let departamento = retorno;
 
                     _this.$elId.val(departamento.id);
                     _this.$elDescricao.val(departamento.descricao);
@@ -93,7 +89,6 @@ app.views.departamento.editar.prototype = {
     },
 
     habiliteCampos: function () {
-        debugger;
         if (this.ehFluxoDeCadastro) {
             this.$elExcluir.hide();
         }
@@ -104,20 +99,21 @@ app.views.departamento.editar.prototype = {
     },
 
     salvar: function () {
+        //this.$elForm.submit();
         let _this = this;
         let url = location.origin + "/Departamento/Salvar";
         let departamento = {
             codigo: Number(this.$elId.val()),
             descricao: this.$elDescricao.val()
         }
+        console.log(this.$elDescricao)
+        console.log(this.$elDescricao.val())
 
-        debugger;
         if (!departamento.descricao) {
-            var mensagem = "O campo Descrição é obrigatório.";
+            let mensagem = "O campo Descrição é obrigatório.";
             alert(mensagem);
             throw (mensagem);
         }
-        //let sla = departamento, departamentoParaAtualizar => departamentoParaAtualizar.descricao = departamento.descricao;
 
         console.log("salvar: \n" + id)
 
@@ -140,7 +136,6 @@ app.views.departamento.editar.prototype = {
     },
 
     excluir: function () {
-        debugger;
         let _this = this;
         let url = location.origin + "/Departamento/Excluir";
         let data = {
@@ -166,7 +161,6 @@ app.views.departamento.editar.prototype = {
     },
 
     voltarParaTelaInicial: function () {
-        debugger;
         window.location = "index.html";
     },
 
