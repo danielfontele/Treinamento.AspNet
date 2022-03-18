@@ -84,6 +84,7 @@ app.views.funcionario.index.prototype = {
                 .concat("<tr class='item'>")
                 .concat("<td data-codigo='" + funcionario.codigo + "' >").concat(funcionario.codigo).concat("</td>")
                 .concat("<td>").concat(funcionario.nome).concat("</td>")
+                .concat("<td>").concat(funcionario.departamento != null ? (funcionario.departamento.codigo + " - " + funcionario.departamento.descricao) : "Nenhum").concat("</td>")
                 .concat("</tr>")
 
             return linhas

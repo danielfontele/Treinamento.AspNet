@@ -39,6 +39,11 @@ namespace App.Web.Controllers
             {
                 Codigo = dto.Codigo,
                 Nome = dto.Nome,
+                Departamento = new Departamento
+                {
+                    Codigo = dto.Departamento.Codigo,
+                    Descricao = dto.Departamento.Descricao
+                }
             };
 
             return View(funcionario);
@@ -57,12 +62,13 @@ namespace App.Web.Controllers
             var dto = new DtoFuncionario
             {
                 Codigo = model.Codigo,
-                Nome = model.Nome,
-                Departamento = new DtoDepartamento
-                {
-                    Codigo = model.Departamento.Codigo,
-                    Descricao = model.Departamento.Descricao
-                }
+                Nome = model.Nome
+            };
+
+            dto.Departamento = model.Departamento == null ? null : new DtoDepartamento
+            {
+                Codigo = model.Departamento.Codigo,
+                Descricao = model.Departamento.Descricao
             };
 
             if (novoRegistro)
@@ -97,7 +103,7 @@ namespace App.Web.Controllers
 
             var resultado = _servico.ConsultePaginado(filtro, 1, itensPorPagina);
 
-            var lista = resultado.Lista.Select(x => new Funcionario { Codigo = x.Codigo, Nome = x.Nome }).ToList();
+            var lista = resultado.Lista.Select(x => new Funcionario { Codigo = x.Codigo, Nome = x.Nome, Departamento = new Departamento { Codigo = x.Departamento.Codigo, Descricao = x.Departamento.Descricao } }).ToList();
 
             return Json(lista);
         }
@@ -115,7 +121,7 @@ namespace App.Web.Controllers
         public IActionResult ConsulteLista()
         {
             var listaDto = _servico.ConsulteLista();
-            var lista = listaDto.Select(x => new Funcionario { Codigo = x.Codigo, Nome = x.Nome }).ToList();
+            var lista = listaDto.Select(x => new Funcionario { Codigo = x.Codigo, Nome = x.Nome, Departamento = new Departamento { Codigo = x.Departamento.Codigo, Descricao = x.Departamento.Descricao } }).ToList();
 
             return Json(lista);
         }

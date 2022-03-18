@@ -33,6 +33,7 @@
                 @Html.LabelFor(x => x.Codigo)
             </div>
             <div class="coluna">
+                @Html.HiddenFor(x => x.Codigo)
                 @Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )
             </div>
         </div>
@@ -53,7 +54,7 @@
                 @Html.LabelFor(x => x.Departamento)
             </div>
             <div class="coluna">
-                @Html.AppCombogridDepartamentoFor(x => x.Departamento)
+                @Html.AppCombogridDepartamentoFor(x => x.Departamento).HtmlAttributes(new {@class="tamanho300"})
             </div>
         </div>
 

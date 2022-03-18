@@ -33,6 +33,7 @@
                 @Html.LabelFor(x => x.Codigo)
             </div>
             <div class="coluna">
+                @Html.HiddenFor(x => x.Codigo)
                 @Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )
             </div>
         </div>
