@@ -44,6 +44,7 @@ namespace App.Web.Controllers
             return View(departamento);
         }
 
+        // to-do: bug: editar tá salvando duplicado
         [HttpPost]
         public IActionResult Salvar(Departamento model)
         {

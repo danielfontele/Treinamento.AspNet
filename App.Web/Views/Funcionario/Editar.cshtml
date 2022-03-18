@@ -1,46 +1,81 @@
-﻿@model Funcionario
+﻿@{
+    ViewData["titulo"] = "Funcionario";
 
-<section class="painel app-views-funcionario-editar">
-            
-    <!-- Barra de botoes -->
-    <nav>
-        @Html.ActionLink("Salvar", "Salvar")
-        @Html.ActionLink("Excluir", "Excluir")
-        @Html.ActionLink("Cancelar e voltar", "Index")
-    </nav>
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { habilite = true };
+    
+}
 
-    <!-- Titulo -->
-    <div class="titulo-principal">Funcionários</div>
+@model Funcionario
 
-    <!-- Codigo -->
-    <div class="linha">
-        <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Codigo)
+<section id="@(idComponente)" class="painel app-views-funcionario-editar">
+
+    @using (Html.BeginForm("Salvar", "Funcionario", FormMethod.Post))
+    {
+        <!-- Barra de botoes -->
+        <nav>
+            <a href="#" name="salvar">Salvar</a>
+
+            @if (Model != null && Model.Codigo != 0)
+            {
+                @Html.ActionLink("Excluir", "Excluir", new { Model.Codigo } )
+            }
+
+            @Html.ActionLink("Cancelar e voltar", "Index")
+        </nav>
+
+        <!-- Titulo -->
+        <div class="titulo-principal">Funcionario</div>
+
+        <!-- Codigo -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Codigo)
+            </div>
+            <div class="coluna">
+                @Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )
+            </div>
         </div>
-        <div class="coluna">
-            @Html.TextBoxFor(x => x.Codigo)
-        </div>
-    </div>
 
-    <!-- Nome -->
-    <div class="linha">
-        <div class="coluna40 texto-alinhado-direita">
-            @Html.LabelFor(x => x.Nome)
+        <!-- Descrição -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Nome)
+            </div>
+            <div class="coluna">
+                @Html.TextBoxFor(x => x.Nome, new { @class="tamanho300", @autocomplete="off", @name="nome"})
+            </div>
         </div>
-        <div class="coluna">
-            @Html.TextBoxFor(x => x.Nome, new { @class="tamanho300", @autocomplete="off"})
-        </div>
-    </div>
 
+        <!-- ComboGrid -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Departamento)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridDepartamentoFor(x => x.Departamento)
+            </div>
+        </div>
+
+        
+    }
 
 </section>
 
 
+
 @section Scripts{
 
-    <script src="/js/app.views.funcionario.editar.js" ></script>
-    <script>        
-        //new app.views.funcionario.editar($(".app-views-funcionario-editar"));
-    </script>
+<script>
+    $(function() {
+        app.carregueJavascript("/js/app.views.funcionario.editar.js", {
+            callback: function() {
+
+                new app.views.funcionario.editar($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+            }
+        });
+    })
+</script>
 
 }
+

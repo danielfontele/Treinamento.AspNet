@@ -58,6 +58,11 @@ namespace App.Web.Controllers
             {
                 Codigo = model.Codigo,
                 Nome = model.Nome,
+                Departamento = new DtoDepartamento
+                {
+                    Codigo = model.Departamento.Codigo,
+                    Descricao = model.Departamento.Descricao
+                }
             };
 
             if (novoRegistro)
