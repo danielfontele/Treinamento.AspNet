@@ -44,7 +44,6 @@ namespace App.Web.Controllers
             return View(departamento);
         }
 
-        // to-do: bug: editar tá salvando duplicado
         [HttpPost]
         public IActionResult Salvar(Departamento model)
         {
@@ -69,10 +68,6 @@ namespace App.Web.Controllers
             {
                 _servico.Atualize(dto);
             }
-
-            //var departamentoDto = new DtoDepartamento { Codigo = departamento.Codigo, Descricao = departamento.Descricao };
-            
-            //_servico.Cadastre(departamentoDto);
 
             return RedirectToAction("Index");
         }

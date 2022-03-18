@@ -80,10 +80,6 @@ namespace App.Web.Controllers
                 _servico.Atualize(dto);
             }
 
-            //var funcionarioDto = new DtoFuncionario { Codigo = funcionario.Codigo, Nome = funcionario.Nome };
-
-            //_servico.Cadastre(funcionarioDto);
-
             return RedirectToAction("Index");
         }
 

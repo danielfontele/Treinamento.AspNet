@@ -62,8 +62,6 @@
         $(function() {
             app.carregueJavascript("/js/app.views.funcionario.index.js", {
                 callback: function() {
-                    // var app = { views: { funcionario: { index: function(a, b) { } } } }
-
                     new app.views.funcionario.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
                 }
             });

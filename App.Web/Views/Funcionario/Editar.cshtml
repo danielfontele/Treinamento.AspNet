@@ -71,7 +71,6 @@
     $(function() {
         app.carregueJavascript("/js/app.views.funcionario.editar.js", {
             callback: function() {
-
                 new app.views.funcionario.editar($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
             }
         });

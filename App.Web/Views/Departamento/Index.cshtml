@@ -60,8 +60,6 @@
         $(function() {
             app.carregueJavascript("/js/app.views.departamento.index.js", {
                 callback: function() {
-                    // var app = { views: { departamento: { index: function(a, b) { } } } }
-
                     new app.views.departamento.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
                 }
             });
