@@ -1,12 +1,15 @@
 ﻿
-@model ComponenteModel
+@model TextBoxModel
 
 
 <input type="text" 
        name="@(Model.Propriedade)" 
        id="@(Model.Propriedade)" 
-       placeholder="Código..."
-       class=""/>
+       value = "@(Model.Valor)"
+       placeholder = "@(Model.Placeholder)"
+       @if (!Model.Habilite) { <text>disabled</text>}
+       
+       />
 
 <script>
      $(function(){

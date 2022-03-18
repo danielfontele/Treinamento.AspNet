@@ -34,7 +34,9 @@
             </div>
             <div class="coluna">
                 @Html.HiddenFor(x => x.Codigo)
-                @Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )
+                @(Html.AppTextBox(x => x.Codigo)
+                      .Habilite(false))
+                @*@Html.TextBoxFor(x => x.Codigo, new { @name="id", disabled="disabled" } )*@
             </div>
         </div>
 
@@ -47,17 +49,6 @@
                 @Html.TextBoxFor(x => x.Descricao, new { @class="tamanho300", @autocomplete="off", @name="descricao"})
             </div>
         </div>
-
-        <!-- ComboGrid -->
-        <div class="linha">
-            <div class="coluna40 texto-alinhado-direita">
-                @Html.Label("Departamento")
-            </div>
-            <div class="coluna">
-                @Html.AppCombogridDepartamento("Departamento")
-            </div>
-        </div>
-
         
     }
 
