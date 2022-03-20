@@ -1,0 +1,41 @@
+﻿@model AppTabelaModel
+
+<div class="linha">
+    <div class="coluna">
+        @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})
+    </div>
+</div>
+
+<table name="@(Model.Nome)">
+    <thead>
+        <tr>
+            @foreach (var coluna in @Model.Colunas)
+            {
+                <th>@coluna</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="@Model.Colunas.Length">
+                Total:&nbsp;<span>0</span>
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+<script>
+    $(function(){
+           app.carregueJavascript("/js/app.tabela.js", {
+               callback: function() {
+                   new app.tabela($("table"), "@(Model.Caminho)", "@(Model.CaminhoEditar)", $("#filtro"));
+               }
+           });
+       });
+</script>

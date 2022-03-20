@@ -17,38 +17,12 @@
 
     <div class="linha">
         <div class="coluna">
-            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})             
-            <button name="pesquisar">Pesquisar</button>
-        </div>
-    </div>
-
-    <div class="linha">
-        <div class="coluna">
-
-            <table name="grid">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Descrição</th>
-                        <th>Departamento</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>                                                 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="3">
-                            Total:&nbsp;<span>0</span>
-                        </th>
-                    </tr>
-                </tfoot>
-                <</table>
-
+            @(Html.AppTabela()
+                  .Nome("grid")
+                  .Colunas(new string[] {"Codigo", "Nome", "Departamento"})
+                  .CaminhoEditar("/Funcionario/Editar")
+                  .CaminhoGet("/Funcionario/ConsulteParcial")
+                  .ColunasBody(new string[] {"codigo", "nome", "departamento"}))
         </div>
     </div>
 

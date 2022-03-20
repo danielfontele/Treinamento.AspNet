@@ -5,9 +5,12 @@
     var modelParaOClientSide = new { habilite = true };
 }
 
+@model Departamento
+
+
 <section id="@(idComponente)" class="painel app-views-departamento-index">
-           
-    <nav>        
+
+    <nav>
         @Html.ActionLink("Novo", "Novo")
     </nav>
 
@@ -17,36 +20,12 @@
 
     <div class="linha">
         <div class="coluna">
-            @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})             
-            <button name="pesquisar">Pesquisar</button>
-        </div>
-    </div>
-
-    <div class="linha">
-        <div class="coluna">
-
-            <table name="grid">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Descrição</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>                                                 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="2">
-                            Total:&nbsp;<span>0</span>
-                        </th>
-                    </tr>
-                </tfoot>
-            </table>
-
+            @(Html.AppTabela()
+                  .Nome("grid")
+                  .Colunas(new string[] {"Código", "Nome"})
+                  .CaminhoEditar("/Departamento/Editar")
+                  .CaminhoGet("/Departamento/ConsulteParcial")
+                  .ColunasBody(new string[] {"codigo", "nome"}))
         </div>
     </div>
 
@@ -56,15 +35,15 @@
 
 @section Scripts{
 
-    <script>
-        $(function() {
-            app.carregueJavascript("/js/app.views.departamento.index.js", {
-                callback: function() {
-                    new app.views.departamento.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
-                }
-            });
-        })
-    </script>
+<script>
+    $(function() {
+        app.carregueJavascript("/js/app.views.departamento.index.js", {
+            callback: function() {
+                new app.views.departamento.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+            }
+        });
+    })
+</script>
 
 }
 
