@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["titulo"] = "Movimentacao";
+
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { habilite = true };
+    
+}
+
+@model Movimentacao
+
+<section id="@(idComponente)" class="painel app-views-funcionario-editar">
+
+    @using (Html.BeginForm("Salvar", "Movimentacao", FormMethod.Post))
+    {
+        <!-- Barra de botoes -->
+        <nav>
+            <a href="#" name="salvar">Salvar</a>
+
+            @Html.ActionLink("Cancelar e voltar", "Index")
+        </nav>
+
+        <!-- Titulo -->
+        <div class="titulo-principal">Movimentação</div>
+
+        <!-- Data Ocorrência -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.DataOcorrencia)
+            </div>
+            <div class="coluna">
+                @(Html.AppTextBox(x => x.Codigo)
+                      .Habilite(true))
+            </div>
+        </div>
+
+        <!-- ComboGrid -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.LabelFor(x => x.Funcionario)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridDepartamentoFor(x => x.Funcionario).HtmlAttributes(new {@class="tamanho300"})
+            </div>
+        </div>
+
+        
+    }
+
+</section>
+
+
+
+@section Scripts{
+
+<script>
+    $(function() {
+        app.carregueJavascript("/js/app.views.movimentacao.index.js", {
+            callback: function() {
+                new app.views.movimentacao.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+            }
+        });
+    })
+</script>
+
+}
+

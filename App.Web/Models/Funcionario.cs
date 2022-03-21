@@ -1,11 +1,8 @@
 ﻿namespace App.Web.Models
 {
-    public class Funcionario
+    public class Funcionario : ModeloBase
     {
-        public int Codigo { get; set; }
-
         public string Nome { get; set; }
-
         public Departamento Departamento { get; set; }
     }
 }

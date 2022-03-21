@@ -2,11 +2,8 @@
 
 namespace App.Web.Models
 {
-    public class Departamento
+    public class Departamento : ModeloBase
     {
-        [DisplayName("Código")]
-        public int Codigo { get; set; }
-
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
     }
